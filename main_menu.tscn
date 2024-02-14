@@ -1,0 +1,74 @@
+[gd_scene load_steps=15 format=3 uid="uid://dxhnc1hqv4f82"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_7j1uk"]
+[ext_resource type="Theme" uid="uid://jwxaf0fepeof" path="res://MenuTheme.tres" id="2_73x2e"]
+[ext_resource type="Texture2D" uid="uid://b1c7f1xkhl00m" path="res://assets/MenuBg.png" id="2_uaeys"]
+[ext_resource type="Texture2D" uid="uid://cuxt7cqulndi8" path="res://assets/ButtonOnePlayer.png" id="4_86kix"]
+[ext_resource type="Texture2D" uid="uid://bw445tol55poi" path="res://assets/ButtonOnePlayerClick.png" id="5_1va6a"]
+[ext_resource type="Texture2D" uid="uid://bilfuu0l6t6lj" path="res://assets/ButtonOnePlayerHover.png" id="6_s2a5f"]
+[ext_resource type="Texture2D" uid="uid://c77may1xyk8nu" path="res://assets/ButtonTwoPlayer.png" id="7_6cx5r"]
+[ext_resource type="Texture2D" uid="uid://duyldkmjpy4yx" path="res://assets/ButtonTwoPlayerClick.png" id="8_myp3n"]
+[ext_resource type="Texture2D" uid="uid://dkmsfqmtum6ha" path="res://assets/ButtonTwoPlayerHover.png" id="9_muyb1"]
+[ext_resource type="Texture2D" uid="uid://j283w67flybo" path="res://assets/ExitButton.png" id="10_fd4fp"]
+[ext_resource type="Texture2D" uid="uid://bclbjrcch4t0o" path="res://assets/ExitButtonClick.png" id="11_dqyxs"]
+[ext_resource type="Texture2D" uid="uid://cvds0ammnu3ml" path="res://assets/ExitButtonHover.png" id="12_5joyj"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_qhxms"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_5f8ae"]
+events = [SubResource("InputEventKey_qhxms")]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7j1uk")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_uaeys")
+offset = Vector2(80, 72)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 32.0
+offset_right = 144.0
+offset_bottom = 128.0
+
+[node name="OnePlayerButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_73x2e")
+texture_normal = ExtResource("4_86kix")
+texture_pressed = ExtResource("5_1va6a")
+texture_hover = ExtResource("6_s2a5f")
+
+[node name="TwoPlayerButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_73x2e")
+texture_normal = ExtResource("7_6cx5r")
+texture_pressed = ExtResource("8_myp3n")
+texture_hover = ExtResource("9_muyb1")
+
+[node name="Quit" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("2_73x2e")
+shortcut = SubResource("Shortcut_5f8ae")
+texture_normal = ExtResource("10_fd4fp")
+texture_pressed = ExtResource("11_dqyxs")
+texture_hover = ExtResource("12_5joyj")
+
+[connection signal="button_up" from="MarginContainer/OnePlayerButton" to="." method="_on_one_player_button_button_up"]
+[connection signal="button_up" from="MarginContainer/TwoPlayerButton" to="." method="_on_two_player_button_button_up"]
+[connection signal="button_up" from="MarginContainer/Quit" to="." method="_on_quit_button_up"]

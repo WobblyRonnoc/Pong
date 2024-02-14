@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://jwxaf0fepeof"]
+
+[ext_resource type="FontFile" uid="uid://ck0ku07p3wkda" path="res://Early GameBoy.ttf" id="1_dhekg"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_0mwab"]
+
+[resource]
+/fonts/GBfont = ExtResource("1_dhekg")
+/icons/MainMenuButton = SubResource("MeshTexture_0mwab")
