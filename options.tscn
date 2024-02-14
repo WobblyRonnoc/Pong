@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmu6s6oe8ahx3"]
+
+[ext_resource type="Script" path="res://options.gd" id="1_jtk3j"]
+[ext_resource type="Texture2D" uid="uid://d0hv7o7586tsn" path="res://assets/bg.png" id="1_l2hc4"]
+[ext_resource type="Texture2D" uid="uid://cr83sxsv66ul1" path="res://assets/Button.png" id="3_q6jhe"]
+[ext_resource type="Texture2D" uid="uid://lrniso3qeur" path="res://assets/ButtonClick.png" id="4_757kf"]
+[ext_resource type="Texture2D" uid="uid://d3mis8jwp5efv" path="res://assets/ButtonHover.png" id="5_ws0ok"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jtk3j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l2hc4")
+centered = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -98.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="PlayerSpeedLabel" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Player Speed
+"
+
+[node name="PlayerSpeedValue" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "150"
+
+[node name="PlayerSpeedSlider" type="HSlider" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 100.0
+max_value = 200.0
+value = 150.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="BallSpeedLabel" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Ball Speed
+"
+
+[node name="BallSpeedValue" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "125
+"
+
+[node name="BallSpeedSlider" type="HSlider" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 100.0
+max_value = 200.0
+value = 125.0
+
+[node name="Back" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("3_q6jhe")
+texture_pressed = ExtResource("4_757kf")
+texture_hover = ExtResource("5_ws0ok")
+
+[node name="DefaultPlayer" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 172.0
+offset_right = 321.0
+offset_bottom = 212.0
+texture_normal = ExtResource("3_q6jhe")
+texture_pressed = ExtResource("4_757kf")
+texture_hover = ExtResource("5_ws0ok")
+
+[node name="DefaultsBall" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 122.0
+offset_right = 321.0
+offset_bottom = 162.0
+texture_normal = ExtResource("3_q6jhe")
+texture_pressed = ExtResource("4_757kf")
+texture_hover = ExtResource("5_ws0ok")
+
+[connection signal="value_changed" from="MarginContainer2/VBoxContainer/PlayerSpeedSlider" to="." method="_on_player_speed_slider_value_changed"]
+[connection signal="value_changed" from="MarginContainer2/VBoxContainer/BallSpeedSlider" to="." method="_on_ball_speed_slider_value_changed"]
+[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
+[connection signal="button_up" from="DefaultPlayer" to="." method="_on_back_button_up"]
+[connection signal="button_up" from="DefaultsBall" to="." method="_on_back_button_up"]

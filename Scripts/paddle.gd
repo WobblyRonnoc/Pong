@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@export var SPEED : float = 100.0
+@onready var SPEED = Global.player_speed
+
 @export_enum("One", "Two") var player : String
 @onready var sprite = $Sprite
 

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var SPEED : float = 100.0 
+@onready var SPEED = Global.ball_speed
 
 func _ready():
 	velocity.y = SPEED

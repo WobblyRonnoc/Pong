@@ -35,17 +35,14 @@ offset = Vector2(80, 72)
 
 [node name="Paddle" parent="." instance=ExtResource("3_cxs55")]
 position = Vector2(8, 72)
-SPEED = 150.0
 player = "One"
 
 [node name="Paddle2" parent="." instance=ExtResource("3_cxs55")]
 position = Vector2(152, 72)
-SPEED = 150.0
 player = "Two"
 
 [node name="Ball" parent="." instance=ExtResource("4_366r0")]
 position = Vector2(80, 71)
-SPEED = 125.0
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
 position = Vector2(159, 67)

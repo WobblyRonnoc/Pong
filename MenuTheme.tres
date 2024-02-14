@@ -5,5 +5,6 @@
 [sub_resource type="MeshTexture" id="MeshTexture_0mwab"]
 
 [resource]
+default_font = ExtResource("1_dhekg")
 /fonts/GBfont = ExtResource("1_dhekg")
 /icons/MainMenuButton = SubResource("MeshTexture_0mwab")
