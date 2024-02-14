@@ -20,7 +20,6 @@ offset = Vector2(80, 72)
 
 [node name="Paddle" parent="." instance=ExtResource("2_boihj")]
 position = Vector2(8, 72)
-SPEED = 150.0
 player = "One"
 
 [node name="Ball" parent="." instance=ExtResource("3_cq7q5")]
@@ -31,6 +30,13 @@ position = Vector2(159, 67)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
 position = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_lvli7")
+
+[node name="ScoreWall" type="StaticBody2D" parent="."]
+position = Vector2(159, 67)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreWall"]
+position = Vector2(-163, 5)
 shape = SubResource("RectangleShape2D_lvli7")
 
 [node name="Ceiling" type="StaticBody2D" parent="."]

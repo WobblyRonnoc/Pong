@@ -37,52 +37,20 @@ script = ExtResource("1_7j1uk")
 texture = ExtResource("2_uaeys")
 offset = Vector2(80, 72)
 
-[node name="TwoPlayerButton" type="TextureButton" parent="."]
-layout_mode = 2
-offset_left = 82.0
-offset_top = 41.0
-offset_right = 133.0
-offset_bottom = 67.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("2_73x2e")
-texture_normal = ExtResource("7_6cx5r")
-texture_pressed = ExtResource("8_myp3n")
-texture_hover = ExtResource("9_muyb1")
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="OnePlayerButton" type="TextureButton" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-offset_left = 21.0
-offset_top = 50.0
-offset_right = 72.0
-offset_bottom = 76.0
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("2_73x2e")
-texture_normal = ExtResource("4_86kix")
-texture_pressed = ExtResource("5_1va6a")
-texture_hover = ExtResource("6_s2a5f")
 
-[node name="Options" type="TextureButton" parent="."]
+[node name="Quit" type="TextureButton" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 27.0
-offset_top = 83.0
-offset_right = 78.0
-offset_bottom = 109.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("2_73x2e")
-texture_normal = ExtResource("10_olvr5")
-texture_pressed = ExtResource("11_tjqtd")
-texture_hover = ExtResource("12_lubmk")
-
-[node name="Quit" type="TextureButton" parent="."]
-layout_mode = 2
-offset_left = 72.0
-offset_top = 111.0
-offset_right = 123.0
-offset_bottom = 137.0
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = ExtResource("2_73x2e")
 shortcut = SubResource("Shortcut_5f8ae")
@@ -90,14 +58,39 @@ texture_normal = ExtResource("10_fd4fp")
 texture_pressed = ExtResource("11_dqyxs")
 texture_hover = ExtResource("12_5joyj")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_left = 88.0
-offset_top = 32.0
-offset_right = 144.0
-offset_bottom = 128.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 
-[connection signal="button_up" from="TwoPlayerButton" to="." method="_on_two_player_button_button_up"]
-[connection signal="button_up" from="OnePlayerButton" to="." method="_on_one_player_button_button_up"]
-[connection signal="button_up" from="Options" to="." method="_on_options_button_up"]
-[connection signal="button_up" from="Quit" to="." method="_on_quit_button_up"]
+[node name="TwoPlayerButton" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_73x2e")
+texture_normal = ExtResource("7_6cx5r")
+texture_pressed = ExtResource("8_myp3n")
+texture_hover = ExtResource("9_muyb1")
+
+[node name="OnePlayerButton" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_73x2e")
+texture_normal = ExtResource("4_86kix")
+texture_pressed = ExtResource("5_1va6a")
+texture_hover = ExtResource("6_s2a5f")
+
+[node name="Options" type="TextureButton" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_73x2e")
+texture_normal = ExtResource("10_olvr5")
+texture_pressed = ExtResource("11_tjqtd")
+texture_hover = ExtResource("12_lubmk")
+
+[connection signal="button_up" from="MarginContainer/HBoxContainer/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/TwoPlayerButton" to="." method="_on_two_player_button_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/OnePlayerButton" to="." method="_on_one_player_button_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_button_up"]

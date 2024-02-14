@@ -15,7 +15,8 @@ var game_over_man = false
 
 func _ready():
 	p1_home = paddle.global_position.x
-	p2_home = paddle2.global_position.x
+	if (get_tree().current_scene.name == "Level2"):
+		p2_home = paddle2.global_position.x
 	
 	#initialize node references and setup for 2Player Scene
 	if get_tree().current_scene.name == "Level2":
@@ -27,7 +28,8 @@ func _ready():
 
 func _physics_process(delta):
 	paddle.global_position.x = p1_home
-	paddle2.global_position.x = p2_home
+	if get_tree().current_scene.name == "Level2":
+		paddle2.global_position.x = p2_home
 
 
 func _process(delta):
