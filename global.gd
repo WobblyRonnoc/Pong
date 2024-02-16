@@ -15,11 +15,24 @@ var window_pos_y = 487
 var window_x = 160
 var window_y = 144
 
-var player_speed = 150
-var ball_speed = 125
+var player_speeds = {
+	"slow": 100,
+	"medium": 150,
+	"fast": 200
+}
+
+var ball_speeds = {
+	"slow": 100,
+	"medium": 125,
+	"fast": 200
+}
+
+var player_speed = player_speeds["medium"]
+var ball_speed = ball_speeds["medium"]
+
+
 
 func _process(delta):
-	#get_window().position = Vector2i(880, 487)
 	if Input.is_action_just_pressed('ui_cancel'):
 		get_tree().change_scene_to_file("res://main_menu.tscn")
 

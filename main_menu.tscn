@@ -10,11 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://duyldkmjpy4yx" path="res://assets/ButtonTwoPlayerClick.png" id="8_myp3n"]
 [ext_resource type="Texture2D" uid="uid://dkmsfqmtum6ha" path="res://assets/ButtonTwoPlayerHover.png" id="9_muyb1"]
 [ext_resource type="Texture2D" uid="uid://j283w67flybo" path="res://assets/ExitButton.png" id="10_fd4fp"]
-[ext_resource type="Texture2D" uid="uid://cr83sxsv66ul1" path="res://assets/Button.png" id="10_olvr5"]
 [ext_resource type="Texture2D" uid="uid://bclbjrcch4t0o" path="res://assets/ExitButtonClick.png" id="11_dqyxs"]
-[ext_resource type="Texture2D" uid="uid://lrniso3qeur" path="res://assets/ButtonClick.png" id="11_tjqtd"]
 [ext_resource type="Texture2D" uid="uid://cvds0ammnu3ml" path="res://assets/ExitButtonHover.png" id="12_5joyj"]
-[ext_resource type="Texture2D" uid="uid://d3mis8jwp5efv" path="res://assets/ButtonHover.png" id="12_lubmk"]
+[ext_resource type="Texture2D" uid="uid://bh4i4ky112ksd" path="res://assets/OptionsButton.png" id="13_35x7f"]
+[ext_resource type="Texture2D" uid="uid://tufeevyw74b1" path="res://assets/OptionsButtonClick.png" id="14_78mn5"]
+[ext_resource type="Texture2D" uid="uid://c7k3fh2soc78y" path="res://assets/OptionsButtonHover.png" id="15_0k5if"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_qhxms"]
 device = -1
@@ -86,9 +86,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_73x2e")
-texture_normal = ExtResource("10_olvr5")
-texture_pressed = ExtResource("11_tjqtd")
-texture_hover = ExtResource("12_lubmk")
+texture_normal = ExtResource("13_35x7f")
+texture_pressed = ExtResource("14_78mn5")
+texture_hover = ExtResource("15_0k5if")
 
 [connection signal="button_up" from="MarginContainer/HBoxContainer/Quit" to="." method="_on_quit_button_up"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/TwoPlayerButton" to="." method="_on_two_player_button_button_up"]

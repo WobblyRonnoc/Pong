@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmu6s6oe8ahx3"]
+[gd_scene load_steps=15 format=3 uid="uid://dmu6s6oe8ahx3"]
 
 [ext_resource type="Script" path="res://options.gd" id="1_jtk3j"]
 [ext_resource type="Texture2D" uid="uid://d0hv7o7586tsn" path="res://assets/bg.png" id="1_l2hc4"]
-[ext_resource type="Texture2D" uid="uid://cr83sxsv66ul1" path="res://assets/Button.png" id="3_q6jhe"]
-[ext_resource type="Texture2D" uid="uid://lrniso3qeur" path="res://assets/ButtonClick.png" id="4_757kf"]
-[ext_resource type="Texture2D" uid="uid://d3mis8jwp5efv" path="res://assets/ButtonHover.png" id="5_ws0ok"]
+[ext_resource type="Texture2D" uid="uid://div7myutif1bn" path="res://assets/BackButton.png" id="3_o5ury"]
+[ext_resource type="Texture2D" uid="uid://chab18vxsftpo" path="res://assets/BackButtonClick.png" id="4_y3dy3"]
+[ext_resource type="Texture2D" uid="uid://c726au5rh65nk" path="res://assets/BackButtonHover.png" id="5_p1b1j"]
+[ext_resource type="Texture2D" uid="uid://2wsvleyy3l5o" path="res://assets/DefaultButton.png" id="6_75cgh"]
+[ext_resource type="Texture2D" uid="uid://dgxfnksic6yai" path="res://assets/DefaultButtonClick.png" id="7_oexke"]
+[ext_resource type="Texture2D" uid="uid://cmi38kfhw3611" path="res://assets/DefaultButtonHover.png" id="8_r2073"]
+[ext_resource type="Texture2D" uid="uid://bhi887ulsy4oq" path="res://assets/SpeedsOFF1.png" id="9_65dfw"]
+[ext_resource type="Texture2D" uid="uid://cd0iwvcndlq8n" path="res://assets/SpeedsON1.png" id="10_af0kd"]
+[ext_resource type="Texture2D" uid="uid://cf27fpjb2mvjy" path="res://assets/SpeedsOFF2.png" id="11_g2m35"]
+[ext_resource type="Texture2D" uid="uid://7bufbfl3gq6c" path="res://assets/SpeedsON2.png" id="12_6pqgk"]
+[ext_resource type="Texture2D" uid="uid://1l00xfejat55" path="res://assets/SpeedsOFF3.png" id="13_6i57y"]
+[ext_resource type="Texture2D" uid="uid://bces57tlawmpj" path="res://assets/SpeedsON3.png" id="14_o2l6c"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -44,59 +53,97 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-texture_normal = ExtResource("3_q6jhe")
-texture_pressed = ExtResource("4_757kf")
-texture_hover = ExtResource("5_ws0ok")
+texture_normal = ExtResource("3_o5ury")
+texture_pressed = ExtResource("4_y3dy3")
+texture_hover = ExtResource("5_p1b1j")
 
 [node name="Defaults" type="TextureButton" parent="MarginContainer2/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
-texture_normal = ExtResource("3_q6jhe")
-texture_pressed = ExtResource("4_757kf")
-texture_hover = ExtResource("5_ws0ok")
+texture_normal = ExtResource("6_75cgh")
+texture_pressed = ExtResource("7_oexke")
+texture_hover = ExtResource("8_r2073")
+
+[node name="PlayerSpeedLabel" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Player"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 
-[node name="PlayerSpeedLabel" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Player Speed
-"
-
 [node name="PlayerSpeedValue" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "150"
 
+[node name="PlayerSlow" type="TextureButton" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("9_65dfw")
+texture_pressed = ExtResource("10_af0kd")
+
+[node name="PlayerMedium" type="TextureButton" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("11_g2m35")
+texture_pressed = ExtResource("12_6pqgk")
+
+[node name="PlayerFast" type="TextureButton" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("13_6i57y")
+texture_pressed = ExtResource("14_o2l6c")
+
 [node name="PlayerSpeedSlider" type="HSlider" parent="MarginContainer2/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 min_value = 100.0
 max_value = 400.0
 value = 150.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
-layout_mode = 2
-
-[node name="BallSpeedLabel" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2"]
+[node name="BallSpeedLabel" type="Label" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-text = "Ball Speed
-"
+text = "Ball"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
 
 [node name="BallSpeedValue" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "125
 "
 
+[node name="BallSlow" type="TextureButton" parent="MarginContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("9_65dfw")
+texture_pressed = ExtResource("10_af0kd")
+
+[node name="BallMedium" type="TextureButton" parent="MarginContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("11_g2m35")
+texture_pressed = ExtResource("12_6pqgk")
+
+[node name="BallFast" type="TextureButton" parent="MarginContainer2/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("13_6i57y")
+texture_pressed = ExtResource("14_o2l6c")
+
 [node name="BallSpeedSlider" type="HSlider" parent="MarginContainer2/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 min_value = 100.0
@@ -105,5 +152,11 @@ value = 125.0
 
 [connection signal="button_up" from="MarginContainer2/VBoxContainer/HBoxContainer3/Back" to="." method="_on_back_button_up"]
 [connection signal="button_up" from="MarginContainer2/VBoxContainer/HBoxContainer3/Defaults" to="." method="_on_defaults_button_up"]
+[connection signal="toggled" from="MarginContainer2/VBoxContainer/HBoxContainer/PlayerSlow" to="." method="_on_player_slow_toggled"]
+[connection signal="toggled" from="MarginContainer2/VBoxContainer/HBoxContainer/PlayerMedium" to="." method="_on_player_medium_toggled"]
+[connection signal="toggled" from="MarginContainer2/VBoxContainer/HBoxContainer/PlayerFast" to="." method="_on_player_fast_toggled"]
 [connection signal="value_changed" from="MarginContainer2/VBoxContainer/PlayerSpeedSlider" to="." method="_on_player_speed_slider_value_changed"]
+[connection signal="toggled" from="MarginContainer2/VBoxContainer/HBoxContainer2/BallSlow" to="." method="_on_ball_slow_toggled"]
+[connection signal="toggled" from="MarginContainer2/VBoxContainer/HBoxContainer2/BallMedium" to="." method="_on_ball_medium_toggled"]
+[connection signal="toggled" from="MarginContainer2/VBoxContainer/HBoxContainer2/BallFast" to="." method="_on_ball_fast_toggled"]
 [connection signal="value_changed" from="MarginContainer2/VBoxContainer/BallSpeedSlider" to="." method="_on_ball_speed_slider_value_changed"]
