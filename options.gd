@@ -45,6 +45,12 @@ func _ready():
 		select_button("player", player_slow)
 	#TODO: this for every other speed/button combo...
 
+	if get_current_speed_selection("player") == "medium":
+		select_button("player", player_medium)
+
+	if get_current_speed_selection("player") == "fast":
+		select_button("player", player_fast)
+
 func select_button(entity: String, button: Node) -> void: 
 	if entity.to_lower() == "player":
 		for btn in player_speed_buttons:
