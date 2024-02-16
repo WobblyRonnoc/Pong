@@ -8,6 +8,8 @@ var game_over_label
 @onready var paddle = $Paddle
 @onready var paddle2 = $Paddle2
 
+@onready var start_button = $StartButton/Control/StartButton
+
 var p1_home
 var p2_home
 
@@ -62,22 +64,19 @@ func game_over(winner):
 		game_over_label.show()
 	timer.start()
 
-func _on_texture_button_button_up():
-	if randf() > 0.5:
-		ball.velocity.y = 1 * ball.SPEED 
-		ball.velocity.x = 1 * ball.SPEED
-	else:
-		ball.velocity.y = -1 * ball.SPEED 
-		ball.velocity.x = -1 * ball.SPEED
-		
-	
-	
-	$StartButton/Control/TextureButton.hide()
-
-
 func _on_timer_timeout():
 	game_over_man = false
 	Global.p1_score = 0
 	Global.p2_score = 0
 	
 	get_tree().change_scene_to_file("res://level_2.tscn")
+
+
+func _on_start_button_button_up():
+	if randf() > 0.5:
+		ball.velocity.y = 1 * ball.SPEED 
+		ball.velocity.x = 1 * ball.SPEED * 0.5
+	else:
+		ball.velocity.y = -1 * ball.SPEED 
+		ball.velocity.x = -1 * ball.SPEED * 0.5
+	start_button.hide()

@@ -1,12 +1,5 @@
 extends Control
 
-@onready var player_speed_value = $MarginContainer2/VBoxContainer/HBoxContainer/PlayerSpeedValue
-@onready var ball_speed_value = $MarginContainer2/VBoxContainer/HBoxContainer2/BallSpeedValue
-@onready var player_speed_slider = $MarginContainer2/VBoxContainer/PlayerSpeedSlider
-@onready var ball_speed_slider = $MarginContainer2/VBoxContainer/BallSpeedSlider
-
-
-
 @onready var player_slow = $MarginContainer2/VBoxContainer/HBoxContainer/PlayerSlow
 @onready var player_medium = $MarginContainer2/VBoxContainer/HBoxContainer/PlayerMedium
 @onready var player_fast = $MarginContainer2/VBoxContainer/HBoxContainer/PlayerFast
@@ -19,12 +12,31 @@ extends Control
 
 func reset_options():
 	# update slider positions to reflect current speed values
-	select_button("player", player_medium)
-	select_button("ball", ball_medium)
+	select_button("player", player_slow)
+	select_button("ball", ball_slow)
 
-	
+func update_buttons():
+	if get_current_speed_of("player") == "slow":
+		select_button("player", player_slow)
+
+	if get_current_speed_of("player") == "medium":
+		select_button("player", player_medium)
+
+	if get_current_speed_of("player") == "fast":
+		select_button("player", player_fast)
+
+	if get_current_speed_of("ball") == "slow":
+		select_button("ball", ball_slow)
+		
+	if get_current_speed_of("ball") == "medium":
+		select_button("ball", ball_medium)
+		
+	if get_current_speed_of("ball") == "fast":
+		select_button("ball", ball_fast)
+
+
 # returns the global [player/ball]_speeds dictionary key for it's current numeric speed value
-func get_current_speed_selection(entity: String) -> String: 
+func get_current_speed_of(entity: String) -> String: 
 	if entity.to_lower() == "player":
 		for speed in Global.player_speeds:
 			if Global.player_speed == Global.player_speeds[speed]:
@@ -35,21 +47,11 @@ func get_current_speed_selection(entity: String) -> String:
 				return speed
 	
 	return "ERROR: not a valid entity"
-func _ready():
-	ball_speed_slider.value = Global.ball_speed
-	player_speed_slider.value = Global.player_speed
-	print(get_current_speed_selection("player"))
-	print(get_current_speed_selection("ball"))
 	
-	if get_current_speed_selection("player") == "slow":
-		select_button("player", player_slow)
-	#TODO: this for every other speed/button combo...
 
-	if get_current_speed_selection("player") == "medium":
-		select_button("player", player_medium)
+func _ready():
+	update_buttons()
 
-	if get_current_speed_selection("player") == "fast":
-		select_button("player", player_fast)
 
 func select_button(entity: String, button: Node) -> void: 
 	if entity.to_lower() == "player":
@@ -71,28 +73,12 @@ func _on_back_button_up():
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 	
 
-func _on_player_speed_slider_value_changed(value):
-	Global.player_speed = player_speed_slider.value
-	player_speed_value.text = str(Global.player_speed)
-
-
-func _on_ball_speed_slider_value_changed(value):
-	Global.ball_speed = ball_speed_slider.value
-	ball_speed_value.text = str(Global.ball_speed)
-
-
 func _on_defaults_button_up():
 	Global.ball_speed = 125
 	Global.player_speed = 150
 	
 	select_button("player", player_medium)
 	select_button("ball", ball_medium)
-	
-	# Set slider/label to defaults
-	player_speed_value.text = str(Global.player_speed)
-	ball_speed_value.text = str(Global.ball_speed)
-	ball_speed_slider.value = Global.ball_speed 
-	player_speed_slider.value = Global.player_speed
 
 # Player Speed buttons
 func _on_player_slow_toggled(button_pressed):

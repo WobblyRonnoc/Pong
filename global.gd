@@ -16,15 +16,15 @@ var window_x = 160
 var window_y = 144
 
 var player_speeds = {
-	"slow": 100,
+	"slow": 125,
 	"medium": 150,
-	"fast": 200
+	"fast": 250
 }
 
 var ball_speeds = {
-	"slow": 100,
-	"medium": 125,
-	"fast": 200
+	"slow": 125,
+	"medium": 150,
+	"fast": 250
 }
 
 var player_speed = player_speeds["medium"]

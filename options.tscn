@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmu6s6oe8ahx3"]
+[gd_scene load_steps=17 format=3 uid="uid://dmu6s6oe8ahx3"]
 
 [ext_resource type="Script" path="res://options.gd" id="1_jtk3j"]
 [ext_resource type="Texture2D" uid="uid://d0hv7o7586tsn" path="res://assets/bg.png" id="1_l2hc4"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://7bufbfl3gq6c" path="res://assets/SpeedsON2.png" id="12_6pqgk"]
 [ext_resource type="Texture2D" uid="uid://1l00xfejat55" path="res://assets/SpeedsOFF3.png" id="13_6i57y"]
 [ext_resource type="Texture2D" uid="uid://bces57tlawmpj" path="res://assets/SpeedsON3.png" id="14_o2l6c"]
+[ext_resource type="Texture2D" uid="uid://cmgpm3g5fal0o" path="res://assets/BallLabel.png" id="15_kkpee"]
+[ext_resource type="Texture2D" uid="uid://ckqph8lnaq8yj" path="res://assets/PlayerLabel.png" id="16_y1n1t"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -39,12 +41,13 @@ offset_bottom = 98.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_top = 44
+theme_override_constants/margin_right = 46
+theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
+size_flags_horizontal = 8
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
@@ -65,21 +68,17 @@ texture_normal = ExtResource("6_75cgh")
 texture_pressed = ExtResource("7_oexke")
 texture_hover = ExtResource("8_r2073")
 
-[node name="PlayerSpeedLabel" type="Label" parent="MarginContainer2/VBoxContainer"]
+[node name="PlayerLabel" type="TextureButton" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Player"
+size_flags_vertical = 4
+disabled = true
+texture_disabled = ExtResource("16_y1n1t")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
-
-[node name="PlayerSpeedValue" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "150"
+theme_override_constants/separation = -6
+alignment = 1
 
 [node name="PlayerSlow" type="TextureButton" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -99,30 +98,16 @@ toggle_mode = true
 texture_normal = ExtResource("13_6i57y")
 texture_pressed = ExtResource("14_o2l6c")
 
-[node name="PlayerSpeedSlider" type="HSlider" parent="MarginContainer2/VBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 4
-min_value = 100.0
-max_value = 400.0
-value = 150.0
-
-[node name="BallSpeedLabel" type="Label" parent="MarginContainer2/VBoxContainer"]
+[node name="BallLabel" type="TextureButton" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "Ball"
+size_flags_vertical = 4
+disabled = true
+texture_disabled = ExtResource("15_kkpee")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
 layout_mode = 2
-
-[node name="BallSpeedValue" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "125
-"
+theme_override_constants/separation = -6
 
 [node name="BallSlow" type="TextureButton" parent="MarginContainer2/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -142,21 +127,11 @@ toggle_mode = true
 texture_normal = ExtResource("13_6i57y")
 texture_pressed = ExtResource("14_o2l6c")
 
-[node name="BallSpeedSlider" type="HSlider" parent="MarginContainer2/VBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 4
-min_value = 100.0
-max_value = 400.0
-value = 125.0
-
 [connection signal="button_up" from="MarginContainer2/VBoxContainer/HBoxContainer3/Back" to="." method="_on_back_button_up"]
 [connection signal="button_up" from="MarginContainer2/VBoxContainer/HBoxContainer3/Defaults" to="." method="_on_defaults_button_up"]
 [connection signal="toggled" from="MarginContainer2/VBoxContainer/HBoxContainer/PlayerSlow" to="." method="_on_player_slow_toggled"]
 [connection signal="toggled" from="MarginContainer2/VBoxContainer/HBoxContainer/PlayerMedium" to="." method="_on_player_medium_toggled"]
 [connection signal="toggled" from="MarginContainer2/VBoxContainer/HBoxContainer/PlayerFast" to="." method="_on_player_fast_toggled"]
-[connection signal="value_changed" from="MarginContainer2/VBoxContainer/PlayerSpeedSlider" to="." method="_on_player_speed_slider_value_changed"]
 [connection signal="toggled" from="MarginContainer2/VBoxContainer/HBoxContainer2/BallSlow" to="." method="_on_ball_slow_toggled"]
 [connection signal="toggled" from="MarginContainer2/VBoxContainer/HBoxContainer2/BallMedium" to="." method="_on_ball_medium_toggled"]
 [connection signal="toggled" from="MarginContainer2/VBoxContainer/HBoxContainer2/BallFast" to="." method="_on_ball_fast_toggled"]
-[connection signal="value_changed" from="MarginContainer2/VBoxContainer/BallSpeedSlider" to="." method="_on_ball_speed_slider_value_changed"]

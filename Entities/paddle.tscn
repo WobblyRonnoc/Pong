@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/paddle.gd" id="1_skrrl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3mc6"]
-radius = 5.0
+radius = 5.0015
 height = 28.0
 
 [node name="Paddle" type="CharacterBody2D"]

@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://d0hv7o7586tsn" path="res://assets/bg.png" id="2_ka5qw"]
 [ext_resource type="PackedScene" uid="uid://i62xilvdkady" path="res://Entities/paddle.tscn" id="3_cxs55"]
 [ext_resource type="PackedScene" uid="uid://cnnh2rkwjoubf" path="res://Entities/ball.tscn" id="4_366r0"]
-[ext_resource type="Texture2D" uid="uid://cr83sxsv66ul1" path="res://assets/Button.png" id="5_m3qxu"]
-[ext_resource type="Texture2D" uid="uid://lrniso3qeur" path="res://assets/ButtonClick.png" id="6_k620g"]
-[ext_resource type="Texture2D" uid="uid://d3mis8jwp5efv" path="res://assets/ButtonHover.png" id="7_efa1l"]
+[ext_resource type="Texture2D" uid="uid://c5qhwv4hg1f6a" path="res://assets/StartButton.png" id="5_myx1s"]
+[ext_resource type="Texture2D" uid="uid://b47kpr8r2ewp2" path="res://assets/StartButtonClick.png" id="6_0afqm"]
+[ext_resource type="Texture2D" uid="uid://dea2vjwd3urln" path="res://assets/StartButtonHover.png" id="7_coxih"]
 [ext_resource type="FontFile" uid="uid://ck0ku07p3wkda" path="res://Early GameBoy.ttf" id="8_njp61"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fho07"]
@@ -84,7 +84,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureButton" type="TextureButton" parent="StartButton/Control"]
+[node name="StartButton" type="TextureButton" parent="StartButton/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -100,9 +100,9 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 shortcut = SubResource("Shortcut_ax82b")
-texture_normal = ExtResource("5_m3qxu")
-texture_pressed = ExtResource("6_k620g")
-texture_hover = ExtResource("7_efa1l")
+texture_normal = ExtResource("5_myx1s")
+texture_pressed = ExtResource("6_0afqm")
+texture_hover = ExtResource("7_coxih")
 
 [node name="P1Score" type="Label" parent="StartButton/Control"]
 layout_mode = 1
@@ -154,5 +154,5 @@ horizontal_alignment = 1
 wait_time = 5.0
 one_shot = true
 
-[connection signal="button_up" from="StartButton/Control/TextureButton" to="." method="_on_texture_button_button_up"]
+[connection signal="button_up" from="StartButton/Control/StartButton" to="." method="_on_start_button_button_up"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
