@@ -74,8 +74,8 @@ func _on_back_button_up():
 	
 
 func _on_defaults_button_up():
-	Global.ball_speed = 125
-	Global.player_speed = 150
+	Global.ball_speed = Global.ball_speeds["medium"]
+	Global.player_speed = Global.player_speeds["medium"]
 	
 	select_button("player", player_medium)
 	select_button("ball", ball_medium)

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var SPEED = Global.ball_speed
+#@onready var particles = $GPUParticles2D
 
 func _ready():
 	velocity.y = SPEED
@@ -10,7 +11,7 @@ func _ready():
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		
+		#particles.restart()
 		velocity = velocity.bounce(collision.get_normal())
 		
 		if collision.get_collider().name.contains("ScoreBox"):

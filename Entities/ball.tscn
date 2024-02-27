@@ -1,10 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnnh2rkwjoubf"]
+[gd_scene load_steps=7 format=3 uid="uid://cnnh2rkwjoubf"]
 
 [ext_resource type="Script" path="res://Scripts/ball.gd" id="1_irwh2"]
 [ext_resource type="Texture2D" uid="uid://cq7r371fwf56g" path="res://assets/ball.png" id="1_ldfuo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gdahw"]
 radius = 5.0
+
+[sub_resource type="Curve" id="Curve_hyal6"]
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dsgyc"]
+curve = SubResource("Curve_hyal6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wsvh3"]
+particle_flag_disable_z = true
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 50.63
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_dsgyc")
 
 [node name="Ball" type="CharacterBody2D"]
 script = ExtResource("1_irwh2")
@@ -14,3 +31,13 @@ texture = ExtResource("1_ldfuo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gdahw")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+emitting = false
+amount = 65
+process_material = SubResource("ParticleProcessMaterial_wsvh3")
+texture = ExtResource("1_ldfuo")
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
